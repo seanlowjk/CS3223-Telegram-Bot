@@ -62,10 +62,6 @@ process.once('SIGINT', () => {
   bot.stop('SIGINT');
   pool.end();
 });
-process.once('SIGKILL', () => {
-  bot.stop('SIGKILL');
-  pool.end();
-});
 process.once('SIGTERM', () => {
   bot.stop('SIGTERM');
   pool.end();
