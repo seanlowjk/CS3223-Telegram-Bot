@@ -2,10 +2,11 @@ const dotenv = require('dotenv');
 const { Telegraf, Scenes, session } = require('telegraf');
 const { Pool } = require('pg');
 const { registerScene } = require('./scenes/RegisterScene');
+const { assignScene } = require('./scenes/AssignScene');
 
 dotenv.config();
 
-const stage = new Scenes.Stage([registerScene]);
+const stage = new Scenes.Stage([assignScene, registerScene]);
 stage.command('cancel', (ctx) => {
   ctx.reply("Operation canceled");
   return ctx.scene.leave();
@@ -25,6 +26,14 @@ const pool = new Pool({
 bot.command('register', (ctx) => 
   ctx.scene.enter(
     'REGISTER_SCENE',
+    {
+      pool: pool
+    }
+  )
+);
+bot.command('assign', (ctx) => 
+  ctx.scene.enter(
+    'ASSIGN_SCENE',
     {
       pool: pool
     }

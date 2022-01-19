@@ -11,6 +11,7 @@ const registerScene = new Scenes.WizardScene(
   }, 
   async (ctx) => {
     const client = await ctx.scene.state.pool.connect();
+    ctx.scene.state.client = client;
     const matric = ctx.message.text.trim();
     await client.query(SELECT_QUERY, [matric], (err, res) => {
       console.log(res.rows);
@@ -30,12 +31,11 @@ const registerScene = new Scenes.WizardScene(
         ctx.reply(`Your name is: ${fullname}. If your details are correct, please key: YES`);
       }
     });
-    await client.release();
     return await ctx.wizard.next();
   }, 
   async (ctx) => {
     if (ctx.message.text === "YES") {
-      const client = await ctx.scene.state.pool.connect();
+      const client = ctx.scene.state.client;
       const matric = ctx.scene.state.matric;
       const username = ctx.message.chat.username;
       await client.query(UPDATE_QUERY, [username, matric], (err, res) => {
@@ -48,7 +48,8 @@ const registerScene = new Scenes.WizardScene(
     } else {
       ctx.reply("Transaction Cancelled.");
     }
-    
+    await client.release();
+    return ctx.scene.leave();
   }
 );
 
