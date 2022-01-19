@@ -60,9 +60,13 @@ bot.launch();
 // Enable graceful stop
 process.once('SIGINT', () => {
   bot.stop('SIGINT');
-  client.end();
+  pool.end();
+});
+process.once('SIGKILL', () => {
+  bot.stop('SIGKILL');
+  pool.end();
 });
 process.once('SIGTERM', () => {
   bot.stop('SIGTERM');
-  client.end();
+  pool.end();
 });
