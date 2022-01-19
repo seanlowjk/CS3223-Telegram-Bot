@@ -3,10 +3,11 @@ const {Telegraf, Scenes, session} = require('telegraf');
 const {Pool} = require('pg');
 const {registerScene} = require('./scenes/RegisterScene');
 const {assignScene} = require('./scenes/AssignScene');
+const {submitScene} = require('./scenes/SubmitScene');
 
 dotenv.config();
 
-const stage = new Scenes.Stage([assignScene, registerScene]);
+const stage = new Scenes.Stage([assignScene, registerScene, submitScene]);
 stage.command('cancel', (ctx) => {
   ctx.reply('Operation canceled');
   return ctx.scene.leave();
@@ -39,6 +40,15 @@ bot.command('assign', (ctx) =>
       },
   ),
 );
+bot.command('submit', (ctx) =>
+  ctx.scene.enter(
+      'SUBMIT_SCENE',
+      {
+        pool: pool,
+      },
+  ),
+);
+
 bot.launch();
 
 // Enable graceful stop
