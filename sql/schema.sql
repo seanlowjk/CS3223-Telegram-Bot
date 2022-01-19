@@ -22,6 +22,7 @@ CREATE TABLE Presentations (
     matric CHAR(9) NOT NULL REFERENCES Students
         ON DELETE CASCADE, 
     week INTEGER NOT NULL DEFAULT 3, 
+    question INTEGER NOT NULL,
     has_submitted BOOLEAN NOT NULL DEFAULT FALSE, 
     has_presented BOOLEAN NOT NULL DEFAULT FALSE,
     CHECK (week >= 3 AND week <= 13),

@@ -1,7 +1,7 @@
 const {Scenes} = require('telegraf');
 
 const SELECT_QUERY = 'SELECT 1 FROM Admins WHERE username = $1;';
-const CALL_QUERY = 'SELECT assign_new_participation($1, $2)';
+const CALL_QUERY = 'SELECT * FROM assign_new_participation($1, $2)';
 
 const assignScene = new Scenes.WizardScene(
     'ASSIGN_SCENE',
@@ -40,7 +40,13 @@ const assignScene = new Scenes.WizardScene(
                 client.release();
                 return ctx.scene.leave();
               } else {
-                ctx.reply('Transaction Complete.');
+                const rows = res.rows;
+                var message = `List for ${data[1]} Participations are:\n`
+                for (var i = 0; i < rows.length; i++) {
+                  const row = rows[i];
+                  message += `${row.fullname}\t\tQ${row.question}\n`;
+                };
+                ctx.reply(message);
                 client.release();
                 return ctx.scene.leave();
               }
