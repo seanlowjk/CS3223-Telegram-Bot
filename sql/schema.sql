@@ -14,8 +14,8 @@ CREATE INDEX ON Students(LEFT(username, 3));
 CREATE TABLE Admins (
     fullname VARCHAR(100) NOT NULL, 
     username VARCHAR(50) NOT NULL,
-    tutorial VARCHAR(3) NOT NULL,
-    PRIMARY KEY (username, tutorial)
+    tutorial VARCHAR(3) PRIMARY KEY,
+    userid INTEGER NOT NULL
 );
 
 CREATE TABLE Presentations (
