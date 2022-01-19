@@ -27,7 +27,7 @@ const pool = new Pool({
 bot.command('help', (ctx) => {
   const message = "/register : Register onto the bot's service.\n" 
     + "/submit : Submit your presentation work for comments by your tutor.\n"
-    + "/assign : Assign the participatns for the week (ADMIN ONLY)"
+    + "/assign : Assign the participants for the week (ADMIN ONLY)"
   ctx.reply(message);
 })
 bot.command('register', (ctx) =>
