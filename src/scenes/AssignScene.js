@@ -19,8 +19,8 @@ const assignScene = new Scenes.WizardScene(
         client.release();
         return ctx.scene.leave();
       } else {
-        ctx.reply('Enter the number of questions and the tutorial number');
-        ctx.reply('For example: 4 T4');
+        ctx.reply(`Enter the number of questions and the tutorial number
+          For example: 4 T4`);
         return ctx.wizard.next();
       }
     });

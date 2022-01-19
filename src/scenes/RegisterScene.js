@@ -22,8 +22,8 @@ const registerScene = new Scenes.WizardScene(
         ctx.reply('No such student exists.');
         return ctx.scene.leave();
       } else if (res.rows[0].username !== null) {
-        ctx.reply('A user has registered with this matriculation number before.');
-        ctx.reply('if it was not you, do contact @seanlowjk.');
+        ctx.reply(`A user has registered with this matriculation number before.
+          if it was not you, do contact @seanlowjk.`);
         return ctx.scene.leave();
       } else {
         const fullname = res.rows[0].fullname;
