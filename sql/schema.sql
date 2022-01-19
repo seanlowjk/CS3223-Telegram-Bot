@@ -9,6 +9,8 @@ CREATE TABLE Students (
     username VARCHAR(50)
 );
 
+CREATE INDEX ON Students(LEFT(username, 3));
+
 CREATE TABLE Admins (
     fullname VARCHAR(100) NOT NULL, 
     username VARCHAR(50)
