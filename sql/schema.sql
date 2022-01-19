@@ -15,7 +15,7 @@ CREATE TABLE Admins (
     fullname VARCHAR(100) NOT NULL, 
     username VARCHAR(50) NOT NULL,
     tutorial VARCHAR(3) NOT NULL,
-    PRIMARY KEY (username, tutorial);
+    PRIMARY KEY (username, tutorial)
 );
 
 CREATE TABLE Presentations (
