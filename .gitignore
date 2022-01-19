@@ -1,0 +1,12 @@
+# Node Modules
+node_modules
+
+# Environment Variables 
+.env
+
+# Build Files 
+build
+
+# Data Population Files
+*.csv
+sql/populate.sql

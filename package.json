@@ -1,0 +1,29 @@
+{
+  "name": "cs3223-telegram-bot",
+  "version": "1.0.0",
+  "description": "Bot for Administrative Purposes for my CS3223 Classes",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "npx eslint src/** --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanlowjk/CS3223-Telegram-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanlowjk/CS3223-Telegram-Bot/issues"
+  },
+  "homepage": "https://github.com/seanlowjk/CS3223-Telegram-Bot#readme",
+  "dependencies": {
+    "dotenv": "^14.2.0",
+    "pg": "^8.7.1",
+    "telegraf": "4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

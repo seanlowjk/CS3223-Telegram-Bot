@@ -1,0 +1,25 @@
+\c cs3223;
+
+DROP TABLE IF EXISTS Students, Admins, Presentations CASCADE;
+
+CREATE TABLE Students (
+    matric CHAR(9) PRIMARY KEY, 
+    fullname VARCHAR(100) NOT NULL, 
+    tutorial VARCHAR(3) NOT NULL,
+    username VARCHAR(50)
+);
+
+CREATE TABLE Admins (
+    fullname VARCHAR(100) NOT NULL, 
+    username VARCHAR(50)
+);
+
+CREATE TABLE Presentations (
+    matric CHAR(9) NOT NULL REFERENCES Students
+        ON DELETE CASCADE, 
+    week INTEGER NOT NULL DEFAULT 3, 
+    has_submitted BOOLEAN NOT NULL DEFAULT FALSE, 
+    has_presented BOOLEAN NOT NULL DEFAULT FALSE,
+    CHECK (week >= 3 AND week <= 13),
+    PRIMARY KEY (matric, week)
+);
