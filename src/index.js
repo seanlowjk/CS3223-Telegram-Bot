@@ -24,6 +24,12 @@ const pool = new Pool({
   password: process.env.PG_PASSWORD,
 });
 
+bot.command('help', (ctx) => {
+  const message = "/register : Register onto the bot's service.\n" 
+    + "/submit : Submit your presentation work for comments by your tutor.\n"
+    + "/assign : Assign the participatns for the week (ADMIN ONLY)"
+  ctx.reply(message);
+})
 bot.command('register', (ctx) =>
   ctx.scene.enter(
       'REGISTER_SCENE',
